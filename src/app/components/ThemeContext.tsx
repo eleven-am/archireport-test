@@ -13,7 +13,7 @@ const ThemeContext = createContext<ThemeState>({
     toggleDarkMode: () => {},
 });
 
-export const ThemeProvider = memo(({children}: {children: ReactNode}) => {
+export const ThemeProvider = memo(function ThemeProvider({children}: {children: ReactNode}) {
     const [darkMode, toggleDarkMode] = useTheme();
 
     return (

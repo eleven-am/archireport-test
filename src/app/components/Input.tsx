@@ -1,5 +1,4 @@
 import {ChangeEvent, useCallback, memo} from "react";
-import * as React from "react";
 
 interface AuthInputProps {
     type: string;

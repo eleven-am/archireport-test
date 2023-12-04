@@ -1,6 +1,5 @@
 'use client';
 
-import {NewImage} from "@/app/components/NewImage";
 import {AuthInput} from "@/app/components/Input";
 import {memo, useCallback, useState} from "react";
 import {ThemeButton} from "@/app/components/ThemeButton";

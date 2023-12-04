@@ -1,6 +1,6 @@
 'use client';
 
-import {createContext, ReactNode, useCallback, useContext, useEffect, useState} from "react";
+import {createContext, ReactNode, useContext, useEffect, useState} from "react";
 import {useLocalStorage} from "@/app/hooks/useLocalStorage";
 import {ApolloProvider} from "@apollo/client";
 import {getApolloClient} from "@/app/gql/apolloClient";
@@ -22,7 +22,6 @@ interface AuthContext {
     error: string | null;
     setAuth: (auth: UserState | null) => void;
     setAuthError: (error: string | null) => void;
-    getNewToken: () => Promise<string>;
 }
 
 interface AuthProviderProps {
@@ -34,7 +33,6 @@ const AuthContext = createContext<AuthContext>({
     error: null,
     setAuth: () => {},
     setAuthError: () => {},
-    getNewToken: () => Promise.resolve(''),
 });
 
 const defaultAuth: UserState = {
@@ -54,10 +52,6 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
     const router = useRouter();
     const pathname = usePathname();
 
-    const getNewToken = useCallback(() => {
-        return Promise.resolve('');
-    }, []);
-
     useEffect(() => {
         if (auth === null && pathname !== '/auth') {
             router.push('/auth');
@@ -68,7 +62,7 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
 
     return (
         <ApolloProvider client={getApolloClient(auth)}>
-            <AuthContext.Provider value={{auth, error, setAuth, setAuthError, getNewToken}}>
+            <AuthContext.Provider value={{auth, error, setAuth, setAuthError}}>
                 {children}
             </AuthContext.Provider>
         </ApolloProvider>
