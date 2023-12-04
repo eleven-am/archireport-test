@@ -11,7 +11,7 @@ import {UserState} from "@/app/components/AuthContext";
 
 export function getApolloClient(auth: UserState | null) {
     const httpLink = createHttpLink({
-        uri: 'https://api.archireport.com/graphql',
+        uri: 'https://api.archireport.dev/graphql',
     });
 
     const authLink = new ApolloLink((operation, forward) => {
