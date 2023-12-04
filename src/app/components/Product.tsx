@@ -17,21 +17,15 @@ export const Product = memo(function Product({name, location, image, removeProdu
 
     const toggleOptions = useCallback((ev: MouseEvent<HTMLButtonElement>) => {
         setOptionsOpen(prevState => !prevState);
-        setCoords(prev => {
-            if (prev.x !== '0px' && prev.y !== '0px') {
-                return prev;
-            }
+        const {x, width, height, y} = ev.currentTarget.getBoundingClientRect();
 
-            const {x, width, height, y} = ev.currentTarget.getBoundingClientRect();
+        const middleX = x + (width / 2);
+        const middleY = y + (height / 2);
 
-            const middleX = x + (width / 2);
-            const middleY = y + (height / 2);
-
-            return {
-                x: `${window.innerWidth - middleX}px`,
-                y: `${window.innerHeight - middleY}px`
-            }
-        })
+        setCoords({
+            x: `${window.innerWidth - middleX}px`,
+            y: `${window.innerHeight - middleY}px`
+        });
     }, []);
 
     return (
