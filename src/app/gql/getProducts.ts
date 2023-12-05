@@ -5,9 +5,6 @@ const GET_MY_PROJECTS = gql`
     query {
         projects(filter: MINE){
             _id
-            directory {
-                _id
-            }
             properties {
                 name
                 town
