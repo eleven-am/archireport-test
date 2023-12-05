@@ -2,17 +2,26 @@ import {gql, useMutation, useQuery} from '@apollo/client';
 import {useCallback, useMemo, useState} from "react";
 
 const GET_MY_PROJECTS = gql`
-    query projects($filter: [MINE]) {
-        _id
-        properties {
-            name
-            town
-        }
-        image {
-            url {
-                original
-            }
-        }
+    query projects($filter: MINE){
+    _id
+    directory {
+    _id
+    }
+    properties {
+    name
+    description
+    client
+    startDate
+    endDate
+    address
+    zipcode
+    town
+    state
+    country
+    phone
+    mobile
+    email
+    }
     }
 `;
 

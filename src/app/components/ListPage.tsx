@@ -15,7 +15,7 @@ export const ListPage = () => {
         <div className="items-start flex flex-col text-black dark:text-white h-screen overflow-y-clip">
             <div className="justify-between items-center self-stretch border border-[color:var(--border,#EBEBEB)] dark:border-[color:var(--border,#383944)] flex w-full gap-5 px-8 py-5 border-solid max-md:max-w-full max-md:flex-wrap max-md:px-5">
                 <div className="text-base font-semibold grow whitespace-nowrap my-auto">
-                    Bienvenu {auth?.properties.firstname} {auth?.properties.lastname.toUpperCase()}
+                    Bienvenu {auth?.account.properties.firstname} {auth?.account.properties.lastname.toUpperCase()}
                 </div>
                 <div className="items-stretch self-stretch flex justify-between gap-3">
                     <ThemeButton/>

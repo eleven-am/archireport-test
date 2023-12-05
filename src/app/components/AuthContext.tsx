@@ -8,13 +8,14 @@ import {usePathname, useRouter} from "next/navigation";
 
 export interface UserState {
     token: string;
-    code: string;
     _id: string;
-    properties: {
-        email: string;
-        firstname: string;
-        lastname: string;
-    };
+    account: {
+        properties: {
+            email: string;
+            firstname: string;
+            lastname: string;
+        };
+    }
 }
 
 interface AuthContext {
@@ -37,12 +38,13 @@ const AuthContext = createContext<AuthContext>({
 
 const defaultAuth: UserState = {
     token: '',
-    code: '',
     _id: '',
-    properties: {
-        email: 'email@example.com',
-        firstname: 'John',
-        lastname: 'Doe',
+    account: {
+        properties: {
+            email: '',
+            firstname: '',
+            lastname: '',
+        },
     },
 };
 

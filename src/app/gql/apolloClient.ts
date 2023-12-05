@@ -18,7 +18,6 @@ export function getApolloClient(auth: UserState | null) {
         operation.setContext(({ headers = {} }) => ({
             headers: {
                 ...headers,
-                "Client-Id": process.env["CLIENT_ID"],
                 authorization: `Bearer ${auth?.token}`,
             },
         }));
