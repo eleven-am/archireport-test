@@ -387,10 +387,13 @@ func (r *Resolver) mutationFields() graphql.ObjectConfig {
 						SetOwnerID(uid)
 
 					participantIDs := decodeIDList(p.Args["participantIds"])
-					direct := len(participantIDs) == 1 && participantIDs[0] == uid
-					if len(participantIDs) == 2 {
-						direct = true
+					nonOwnerCount := 0
+					for _, pid := range participantIDs {
+						if pid != uid {
+							nonOwnerCount++
+						}
 					}
+					direct := nonOwnerCount == 1
 					roomBuilder.SetIsDirect(direct)
 
 					newRoom, err := roomBuilder.Save(p.Context)
